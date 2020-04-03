@@ -29,8 +29,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.3.200/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script id="script">
-        
         console.log("start script");
+        if (!globalScope.WeakMap) { 
+            globalScope.WeakMap = require('core-js/fn/weak-map');
+        } 
+        
+        
+        
         var currentPageIndex = 0;
         var pdfInstance = null;
         var totalPagesCount = 0;
@@ -45,6 +50,7 @@
         var loadingTask = pdfjsLib.getDocument(d);
         console.log("loading task")
         loadingTask.promise.then(function(pdf) {
+            console.log("1")
             var __TOTAL_PAGES = pdf.numPages;
             for (var i=1; i<=__TOTAL_PAGES; i+=1) {
                 console.log(i)
