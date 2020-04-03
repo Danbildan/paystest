@@ -29,7 +29,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.3.200/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script id="script">
-    
         console.log("start script");
         var currentPageIndex = 0;
         var pdfInstance = null;
@@ -44,7 +43,7 @@
         var loadingTask = pdfjsLib.getDocument({data: pdfData});
         loadingTask.promise.then(function(pdf) {
             var __TOTAL_PAGES = pdf.numPages;
-
+            "use strict"
             for (let i=1; i<=__TOTAL_PAGES; i+=1) {
                 pdf.getPage(i).then(function(page) {
                     var id ='canvas'+i;
